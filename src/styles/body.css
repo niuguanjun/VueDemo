@@ -1,0 +1,58 @@
+#main-title {
+  height: 50px;
+  line-height: 48px;
+  font-size: 18px;
+  background-color: #f5f7fa;
+  border-bottom: 1px solid #d8dde8;
+  position: fixed;
+  z-index: 500;
+  right: 0px;
+  left: 187px;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+#main-content {
+  padding-top: 50px;
+}
+
+#main-filter {
+  background-color: #f5f7fa;
+  border-bottom: 1px solid #d8dde8;
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+
+#filter-item {
+  font: 13px;
+  padding: 1px 26px;
+}
+#filter-item .title {
+  display: inline-block;
+  font-size: 15px;
+}
+#main-footer {
+  position: fixed;
+  padding: 10px 22px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 32px;
+  background-color: white;
+}
+
+#main-footer .ps {
+  position: relative;
+  top: 7px;
+  left: 8px;
+  font-size: 13px;
+  margin-left: 210px;
+}
+
+/* 策略引擎页面专有样式 */
+
+.as .el-tabs__header {
+  padding-left: 10px;
+  margin-bottom: 0px;
+  margin-top: 10px;
+}
