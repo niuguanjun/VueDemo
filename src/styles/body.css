@@ -29,7 +29,12 @@
 }
 #filter-item .title {
   display: inline-block;
-  font-size: 15px;
+  font-size: 13px;
+  width: 100px;
+}
+#filter-item .i-title {
+  display: inline-block;
+  font-size: 13px;
 }
 #main-footer {
   position: fixed;
@@ -55,4 +60,8 @@
   padding-left: 10px;
   margin-bottom: 0px;
   margin-top: 10px;
+}
+.com-input {
+  margin-left: 10px;
+  width: 120px;
 }

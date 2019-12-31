@@ -10,8 +10,11 @@ import Gdxx from '@/pages/Gdxx'
 import Login from '@/pages/Login'
 
 import BeforePay from '@/pages/tactics/beforepay/beforepay'
+import BeforePerPreview from '@/pages/tactics/beforepay/perpreview'
 import Repaying from '@/pages/tactics/repaying/repaying'
 import Verification from '@/pages/tactics/verification/verification'
+import BeforePayCusNew from '@/pages/tactics/beforepay/beforepaycusnew'
+import BeforePayProNew from '@/pages/tactics/beforepay/beforepaypronew'
 
 import Apilog from '@/pages/logs/Apilog'
 
@@ -84,6 +87,21 @@ export default new Router({
       path: '/repaying',
       name: 'repaying',
       component: Repaying
+    },
+    {
+      path: '/beforeperpreview',
+      name: 'beforeperpreview',
+      component: BeforePerPreview
+    },
+    {
+      path: '/beforepaycusnew',
+      name: 'beforepaycusnew',
+      component: BeforePayCusNew
+    },
+    {
+      path: '/beforepaypronew',
+      name: 'beforepaypronew',
+      component: BeforePayProNew
     }
   ]
 })

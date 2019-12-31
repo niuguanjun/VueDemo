@@ -121,7 +121,7 @@ var beforecomData = {
       'comName|1': ['南京领行科技股份有限公司', '湖北盘荣恒益商务咨询有限公司', '深圳市小葱资本管理有限公司'],
       'comShortName|1': ['汇成汇通', 'T3出行', '盘荣恒益'],
       'apiCode|3004000-3004999': 1,
-      'loginName': random.name(),
+      'loginName': 'abcStr',
       'accountType|1': [0, 1],
       'accountStatus|1': [0, 1],
       'isMultipleApply|1': [true, false],
@@ -131,3 +131,20 @@ var beforecomData = {
   ]
 }
 Mock.mock('/user/beforecomData', 'post', beforecomData);
+
+// 贷前产品配置造假数据
+var beforePData = {
+  'data|100': [
+    {
+      'comID|1-100': 1,
+      'comName|1': ['南京领行科技股份有限公司', '湖北盘荣恒益商务咨询有限公司', '深圳市小葱资本管理有限公司'],
+      'comShortName|1': ['汇成汇通', 'T3出行', '盘荣恒益'],
+      'accountType|1': [0, 1],
+      'apiCode|3005000-3005999': 1,
+      'productType|1': ['失信历史,可疑行为', '失信历史', '可疑行为,失信历史,反欺诈风险识别,信用风险识别'],
+      'productCode|1': ['Rule_D_DebtRepayStress', 'RuleSpecialList_c,RuleApplyLoan', 'RuleSpecialList_c'],
+      'productName|1': ['反欺诈规则-特殊名单验证']
+    }
+  ]
+}
+Mock.mock('/user/beforeproduct', 'post', beforePData)

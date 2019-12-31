@@ -19,21 +19,18 @@
             <el-button type="infor" size="mini" style="margin-left: 0px;" @click="resetTps">重置</el-button>
           </div>
         </div>
-        <div class="tab-outer scroll">
-          <el-table 
-            :data="tableDate.slice((this.currentPage - 1) * this.pageSize, (this.currentPage - 1) * this.pageSize + this.pageSize)"
-            border 
-            style="width: 50%">
-            <el-table-column label="APICODE" prop="apicode" align="center"></el-table-column>
-            <el-table-column label="tps" prop="tps" align="center"></el-table-column>
-            <el-table-column label="操作" align="center">
-              <template slot-scope="scope">
-                <el-button type="text" size="small" @click="edittps(scope.row)">编辑</el-button>
-                <el-button type="text" size="small" @click="deletetps(scope.row)">删除</el-button>
-              </template>
-            </el-table-column>
-          </el-table>
-        </div>
+        <el-table
+          :data="tableDate.slice((this.currentPage - 1) * this.pageSize, (this.currentPage - 1) * this.pageSize + this.pageSize)"
+          border style="width: 50%; margin-bottom: 80px; font-size: 12px">
+          <el-table-column label="APICODE" prop="apicode" align="center"></el-table-column>
+          <el-table-column label="tps" prop="tps" align="center"></el-table-column>
+          <el-table-column label="操作" align="center">
+            <template slot-scope="scope">
+              <el-button type="text" size="small" @click="edittps(scope.row)">编辑</el-button>
+              <el-button type="text" size="small" @click="deletetps(scope.row)">删除</el-button>
+            </template>
+          </el-table-column>
+        </el-table>
 
         <!-- 测试使用 el-pagination分页控件 -->
         <div id="main-footer">

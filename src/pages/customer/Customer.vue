@@ -79,14 +79,14 @@
             <el-pagination :page-sizes="[10, 20, 50]" @size-change="sizeChange" layout="sizes" style="margin-left: 10px"></el-pagination>
           </el-col>
 
-          <el-col :span="12">
+          <el-col :span="12" style="text-align: right">
             <el-pagination 
               :total="comTotal" 
               :current-page="comCurrent" 
               :page-size="comPageSize"
               @current-change="currentChange" 
               layout="total, prev, pager, jumper"
-              style="float: right; margin-right: 10px"></el-pagination>
+              style="float: right; margin-right: 10px;"></el-pagination>
           </el-col>
         </el-row>
       </div>

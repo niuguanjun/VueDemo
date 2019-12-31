@@ -188,9 +188,59 @@ var khData = {
     }
   ]
 }
-
+var productList = [
+  {
+    productId: 1,
+    productUrl: '规则',
+    productCategory: '可疑行为',
+    productName: '反欺诈规则-高风险借贷意向验证(Rule_D_ApplyLoanUsury)',
+    productVersion: 'v2.0',
+    productData: '高风险借贷意向验证(ApplyLoanUsury)',
+    productType: '测试',
+    totalNumber: 50,
+    dayNumber: 50,
+    other: ''
+  },
+  {
+    productId: 2,
+    productUrl: '规则',
+    productCategory: '可疑行为',
+    productName: '反欺诈规则-偿债压力指数(Rule_D_DebtRepayStress)',
+    productVersion: 'v2.0',
+    productData: '偿债压力指数(DebtRepayStress)',
+    productType: '测试',
+    totalNumber: 50,
+    dayNumber: 50,
+    other: ''
+  },
+  {
+    productId: 3,
+    productUrl: '规则',
+    productCategory: '可疑行为',
+    productName: '反欺诈规则-特殊名单验证(RuleSpecialList_c)',
+    productVersion: 'v2.0',
+    productData: '特殊名单验证(SpecialList_c)',
+    productType: '测试',
+    totalNumber: 50,
+    dayNumber: 50,
+    other: ''
+  },
+  {
+    productId: 4,
+    productUrl: '规则',
+    productCategory: '可疑行为',
+    productName: '反欺诈规则-法院被执行人(RuleExecution)',
+    productVersion: 'v2.0',
+    productData: '法院被执行人-个人版(Execution)',
+    productType: '测试',
+    totalNumber: 50,
+    dayNumber: 50,
+    other: ''
+  }
+]
 var testData = 'testData哈哈航昂昂昂昂哈昂'
 export {
   khData,
-  testData
+  testData,
+  productList
 }

@@ -3,22 +3,22 @@
     <div id="main-filter">
       <div id="filter-item" style="padding-top: 20px; padding-bottom: 20px; font-size: 13px">
 
-        <span class="title">客户简称: </span>
+        <span class="i-title">客户简称: </span>
         <el-input v-model="comShortName" placeholder="请输入客户简称" size="mini" class="com-input" clearable ></el-input>
 
-        <span class="title" style="margin-left: 30px">登录名: </span>
+        <span class="i-title" style="margin-left: 30px">登录名: </span>
         <el-input v-model="loginName" placeholder="请输入登录名" size="mini" class="com-input" clearable ></el-input>
 
-        <span class="title" style="margin-left: 30px">APICODE: </span>
+        <span class="i-title" style="margin-left: 30px">APICODE: </span>
         <el-input v-model="apiCode" placeholder="请输入APICODE" size="mini" class="com-input" clearable ></el-input>
 
-        <span class="title" style="margin-left: 30px">账户状态: </span>
+        <span class="i-title" style="margin-left: 30px">账户状态: </span>
         <el-select v-model="countStatus" placeholder="请选择" size="mini" class="com-input" clearable >
           <el-option value="启用"></el-option>
           <el-option value="禁用"></el-option>
         </el-select>
 
-        <span class="title" style="margin-left: 30px">账号类型: </span>
+        <span class="i-title" style="margin-left: 30px">账号类型: </span>
         <el-select v-model="countType" placeholder="请选择" size="mini" class="com-input" clearable >
           <el-option value="测试"></el-option>
           <el-option value="正式"></el-option>
@@ -30,7 +30,7 @@
       <el-button type="primary" style="position: fixed; right: 10px; top: 70px" size="mini" @click="newcurstomer">新增商户配置</el-button>
     </div>
     <el-table 
-        :data="beforeData"
+        :data="beforeData.slice((this.comCurrent - 1) * this.comSize, (this.comCurrent - 1) * this.comSize + this.comSize)"
         border 
         style="font-size: 12px; color: black; margin-bottom: 80px">
         <el-table-column label="客户编号" prop="comID" width="80px"></el-table-column>
@@ -72,10 +72,32 @@
           </template>
         </el-table-column>
       </el-table>
+      <div id="main-footer">
+        <el-row style="display: flex" justify="space-between">
+          <el-col :span="12" style="display: flex">
+            <span class="ps">每页显示: </span>
+            <el-pagination 
+              :page-sizes="[10, 20, 50]" 
+              @size-change="sizeChange" 
+              layout="sizes"
+              style="margin-left: 9px"></el-pagination>
+          </el-col>
+          <el-col :span="12">
+            <el-pagination 
+              :total="comTotal" 
+              :current-page="comCurrent" 
+              :page-size="comSize" 
+              @current-change="currentChange" 
+              layout="total, prev, pager, jumper"
+              style="float: right; margin-right: 10px"></el-pagination>
+          </el-col>
+        </el-row>
+      </div>
   </section>  
 </template>
 
 <script>
+import api from '../../../http/api'
 export default {
   data () {
     return {
@@ -84,13 +106,29 @@ export default {
       apiCode: '',
       countStatus: '',
       countType: '',
+      beforeData: [],
+      comTotal: 0,
+      comCurrent: 1,
+      comSize: 10,
     }
   },
   mounted () {
-    
+    this.init();
   },
-  props: ['beforeData'],
   methods: {
+    init: function () {
+      this.getData();
+    },
+    async getData() {
+      api.JH_info('/user/beforecomData', 'post')
+        .then(res => {
+          this.beforeData = res.data
+          this.comTotal = res.data.length
+        })
+        .catch(error => {
+          console.log('customerList', error)
+        })
+    },
     search: function () {
 
     },
@@ -98,28 +136,32 @@ export default {
 
     },
     newcurstomer: function () {
-
+      this.$router.push({path: '/beforepaycusnew'})
     },
     comDetail: function () {
-
+      console.log('查看详情')
     },
     comEdit: function () {
-
+      console.log('编辑客户')
     },
     noUse: function () {
-
+      console.log('禁用或者开启使用')
     },
     resetPs: function () {
-
-    }
+      console.log('重置密码')
+    },
+    // 页数点击
+    sizeChange: function (val) {
+      this.comSize = val;
+      this.comCurrent = 1;
+    },
+    currentChange: function (val) {
+      this.comCurrent = val
+    },
   }
 }
 </script>
 
 <style scoped>
   @import '../../../styles/body.css';
-  .com-input {
-    width: 120px;
-    margin-left: 10px;
-  }
 </style>
