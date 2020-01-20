@@ -109,7 +109,10 @@ export default {
 
     },
     resetCom: function () {
-
+      this.comshortName = '';
+      this.apiCode  = '';
+      this.accountStatus = '';
+      this.accountType = ''
     },
     newProduct: function () {
       this.$router.push({path: '/beforepaypronew'})

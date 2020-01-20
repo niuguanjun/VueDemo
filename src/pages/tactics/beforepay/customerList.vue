@@ -25,7 +25,7 @@
         </el-select>
 
         <el-button type="primary" size="mini" style="margin-left: 10px" @click="search">确定</el-button>
-        <el-button size="mini" style="margin-left: 5px" @click="cancel">取消</el-button>
+        <el-button size="mini" style="margin-left: 5px" @click="reset">重置</el-button>
       </div>
       <el-button type="primary" style="position: fixed; right: 10px; top: 70px" size="mini" @click="newcurstomer">新增商户配置</el-button>
     </div>
@@ -130,16 +130,29 @@ export default {
         })
     },
     search: function () {
-
+      if (this.apiCode) {
+        var tmpArr = [];
+        this.beforeData.forEach(item => {
+          if (item.apiCode == this.apiCode) {
+            tmpArr.push(item);
+            this.beforeData = tmpArr;
+          }
+          
+        })
+      }
     },
-    cancel: function () {
-
+    reset: function () {
+      this.apiCode = '';
+      this.getData();
     },
     newcurstomer: function () {
       this.$router.push({path: '/beforepaycusnew'})
     },
-    comDetail: function () {
-      console.log('查看详情')
+    comDetail: function (val) {
+      if (val) {
+        this.$router.push({path: '/beforecusview', query: {apicode: val.apiCode}})
+      }
+      
     },
     comEdit: function () {
       console.log('编辑客户')

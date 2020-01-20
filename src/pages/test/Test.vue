@@ -1,118 +1,63 @@
 <template>
   <div id="test">
-    <p>尝试修改el-table的行高</p>
-    <el-table 
-      :data="testData"
-      border 
-      style="width: 50%; margin-left: 30px; font-size: 13px">
-      <el-table-column label="编号" type="index"></el-table-column>
-      <el-table-column label="姓名" prop="name"></el-table-column>
-      <el-table-column label="年龄" prop="age"></el-table-column>
-      <el-table-column label="备注" prop="other"></el-table-column>
-    </el-table>
-    <el-table 
-      :data="testData"
-      border 
-      style="width: 50%; margin-left: 30px; font-size: 13px; margin-top: 40px"
-      class="test">
-      <el-table-column label="编号" type="index"></el-table-column>
-      <el-table-column label="姓名" prop="name"></el-table-column>
-      <el-table-column label="年龄" prop="age"></el-table-column>
-      <el-table-column label="备注" prop="other"></el-table-column>
-    </el-table>
-    <p>修改el-form-item的宽度问题</p>
-    <el-form :model="post" label-width="100px">
-      <div class="form">
-        <div class="form-left">
-          <el-form-item label="one: " class="item" prop="one">
-            <el-input v-model="post.one" placeholder=""></el-input>
-          </el-form-item>
-          <el-form-item label="two: " class="item" prop="one">
-            <el-input v-model="post.two" placeholder=""></el-input>
-          </el-form-item>
-        </div>
-        <div class="form-right">
-          <el-form-item label="three: " class="item" prop="three">
-            <el-input v-model="post.three" placeholder=""></el-input>
-          </el-form-item>
-          <el-form-item label="four: " class="item" prop="three">
-            <el-input v-model="post.four" placeholder=""></el-input>
-          </el-form-item>
-        </div>
-      </div>
-    </el-form>
-
+    <div v-for="item of testData" :key="item.id">
+      <el-checkbox @change="getSelectList(item)" v-model="item.isChecked">{{ item.name }}</el-checkbox>
+    </div>
+    <el-button type="primary" size="mini" @click="getAllSelect">获取被点击的内容</el-button>
+    <el-checkbox label="abc" v-model="activeName" @change="test"></el-checkbox>
   </div>  
 </template>
 
 <script>
-import Test2  from './Test2'
+import api from '../../http/api'
 export default {
-  data() {
+  data () {
     return {
-      test: {
-        first: ''
-      },
-      post: {
-        one: '',
-        two: '',
-        three: '',
-        four: ''
-      },
       testData: [
         {
-          name: 'oneName',
-          age: 15,
-          other:'啥也没有'
+          id: '1',
+          name: '第一个'
         },
         {
-          name: 'twoName',
-          age: 15,
-          other:'啥也没有'
+          id: '2',
+          name: '第二个'
         },
         {
-          name: 'thirdName',
-          age: 15,
-          other:'啥也没有'
-        },
-        {
-          name: 'fourthName',
-          age: 15,
-          other:'啥也没有'
-        },
-        {
-          name: 'fiveName',
-          age: 15,
-          other:'啥也没有'
-        },
-        {
-          name: 'sixName',
-          age: 15,
-          other:'啥也没有'
+          id: '3',
+          name: '第三个'
         }
-      ]
+      ],
+      activeName: '',
+      allChecked: []
     }
   },
-  components: {
-    'test-component': Test2
+  mounted () {
   },
   methods: {
+    getSelectList: function (val) {
+      console.log(val.name, val.isChecked);
+      if (val.isChecked) {
+        this.allChecked.push(val)
+      }
+      if (!val.isChecked) {
+        this.allChecked.forEach(item => {
+          if (item.id == val.id) {
+            var index = this.allChecked.indexOf(item);
+            this.allChecked.splice(index, 1);
+          }
+        })
+      }
+    },
+    getAllSelect: function () {
+      console.log(this.allChecked);
+    },
+    test: function () {
+      console.log(this.activeName)
+    }
   }
 }
 </script>
 
 <style>
-.test {
-  background-color: red;
-}
-.test .el-table__row {
-  height: 45px;
-  min-height: 0px;
-}
-.form .form-left {
-  width: 50%
-}
-.form .form-right {
-  width: 50%
-}
+
 </style>

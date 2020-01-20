@@ -57,14 +57,6 @@ export default {
 </script>
 
 <style scoped>
-#tactics-filter {
-  margin-top: 30px;
-  margin-bottom: 30px;
-}
-#tactics-filter .title {
-  margin-left: 80px;
-}
-#tactics-main {
-  padding: 5px 30px;
-}
+@import '../../../styles/body.css';
+
 </style>

@@ -65,3 +65,42 @@
   margin-left: 10px;
   width: 120px;
 }
+#detail-edit {
+  padding: 10px 32px;
+}
+#detail-edit h5 {
+  font-size: 16px;
+  padding-left: 4px;
+  border-left: 3px solid #12d4d7;
+}
+#detail-edit .el-form-item {
+  width: 46%;
+  padding-left: 1%;
+}
+#tactics-filter {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+#tactics-filter .title {
+  margin-left: 80px;
+}
+#tactics-main {
+  padding: 5px 30px;
+}
+#tactics-main h5 {
+  font-size: 16px;
+  padding-left: 4px;
+  border-left: 3px solid #12d4d7;
+}
+#detail-info {
+  padding: 10px 32px;
+}
+#detail-info h5 {
+  font-size: 15px;
+  padding-left: 4px;
+  border-left: 3px solid #12d4d7;
+}
+#detail-info .el-form-item {
+  width: 30%;
+  padding-left: 1%;
+}

@@ -12,9 +12,12 @@ import Login from '@/pages/Login'
 import BeforePay from '@/pages/tactics/beforepay/beforepay'
 import BeforePerPreview from '@/pages/tactics/beforepay/perpreview'
 import Repaying from '@/pages/tactics/repaying/repaying'
-import Verification from '@/pages/tactics/verification/verification'
 import BeforePayCusNew from '@/pages/tactics/beforepay/beforepaycusnew'
 import BeforePayProNew from '@/pages/tactics/beforepay/beforepaypronew'
+import BeforecusView from '@/pages/tactics/beforepay/BeforecusView'
+import Verification from '@/pages/tactics/verification/verification'
+import VerificationCusNew from '@/pages/tactics/verification/cusNew'
+import VerificationProNew from '../pages/tactics/verification/proNew'
 
 import Apilog from '@/pages/logs/Apilog'
 
@@ -102,6 +105,21 @@ export default new Router({
       path: '/beforepaypronew',
       name: 'beforepaypronew',
       component: BeforePayProNew
+    },
+    {
+      path: '/beforecusview',
+      name: 'beforecusview',
+      component: BeforecusView
+    },
+    {
+      path: '/verificationcusnew',
+      name: 'verificationcusnew',
+      component: VerificationCusNew
+    },
+    {
+      path: '/verificationpronew',
+      name: 'verificationpronew',
+      component: VerificationProNew
     }
   ]
 })
