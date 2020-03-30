@@ -24,9 +24,9 @@
     </div>
 
     <!-- 产品配置列表数据 -->
-      <el-table 
-        :data="beforePData.slice((this.beforeCurrent - 1) * this.beforeSize, (this.beforeCurrent - 1) * this.beforeSize + this.beforeSize)" 
-        border 
+      <el-table
+        :data="beforePData.slice((this.beforeCurrent - 1) * this.beforeSize, (this.beforeCurrent - 1) * this.beforeSize + this.beforeSize)"
+        border
         style="font-size: 12px; margin-bottom: 80px; overflow: hidden">
         <el-table-column label="客户编号" prop="comID" width="80px"></el-table-column>
         <el-table-column label="客户名称" prop="comName"></el-table-column>
@@ -52,24 +52,24 @@
         <el-row type="flex" justify="space-between">
           <el-col :span="8" style="display: flex;">
             <span class="ps">每页显示</span>
-            <el-pagination 
-              :page-sizes="[10, 20, 50]" 
-              @size-change="sizeChange" 
+            <el-pagination
+              :page-sizes="[10, 20, 50]"
+              @size-change="sizeChange"
               layout="sizes"
               style="margin-left: 9px"></el-pagination>
           </el-col>
           <el-col :span="8">
-            <el-pagination 
-              :total="beforeTotal" 
-              :current-page="beforeCurrent" 
-              :page-size="beforeSize" 
-              @current-change="currentChange" 
+            <el-pagination
+              :total="beforeTotal"
+              :current-page="beforeCurrent"
+              :page-size="beforeSize"
+              @current-change="currentChange"
               layout="total, prev, pager, jumper"
               style="float: right; margin-right: 10px"></el-pagination>
           </el-col>
         </el-row>
       </div>
-  </section>  
+  </section>
 </template>
 
 <script>
@@ -84,22 +84,22 @@ export default {
       beforePData: [],
       beforeTotal: 0,
       beforeCurrent: 1,
-      beforeSize: 10,
+      beforeSize: 10
     }
   },
   mounted () {
-    this.init();
+    this.init()
   },
   methods: {
     init: function () {
-      this.getData();
+      this.getData()
     },
     async getData () {
       console.log('获取数据')
       api.JH_info('/user/beforeproduct', 'post')
         .then(res => {
-          this.beforePData = res.data;
-          this.beforeTotal = res.data.length;
+          this.beforePData = res.data
+          this.beforeTotal = res.data.length
         })
         .catch(error => {
           console.log('productlist', error)
@@ -109,9 +109,9 @@ export default {
 
     },
     resetCom: function () {
-      this.comshortName = '';
-      this.apiCode  = '';
-      this.accountStatus = '';
+      this.comshortName = ''
+      this.apiCode = ''
+      this.accountStatus = ''
       this.accountType = ''
     },
     newProduct: function () {
@@ -130,11 +130,11 @@ export default {
     // 页数操作
     sizeChange: function (val) {
       console.log(val)
-      this.beforeSize = val;
-      this.beforeCurrent = 1;
+      this.beforeSize = val
+      this.beforeCurrent = 1
     },
     currentChange: function (val) {
-      this.beforeCurrent = val;
+      this.beforeCurrent = val
     }
   }
 }
@@ -142,5 +142,4 @@ export default {
 
 <style scoped>
   @import '../../../styles/body.css';
-  
 </style>

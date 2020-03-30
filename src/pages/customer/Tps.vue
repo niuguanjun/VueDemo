@@ -37,25 +37,23 @@
           <el-row>
             <el-col :span="12" style="display: flex;">
               <span class="ps">每页显示: </span>
-              <el-pagination 
-                :page-sizes="[10, 20, 50]" 
-                @size-change="changeSize"  
+              <el-pagination
+                :page-sizes="[10, 20, 50]"
+                @size-change="changeSize"
                 layout="sizes"
                 style="margin-left: 9px"></el-pagination>
             </el-col>
             <el-col :span="12" style="text-align: right;">
-              <el-pagination 
-                background 
-                :total="tpsTotal" 
-                :current-page="currentPage" 
-                :page-size="pageSize" 
-                @current-change="changeCurrent" 
+              <el-pagination
+                background
+                :total="tpsTotal"
+                :current-page="currentPage"
+                :page-size="pageSize"
+                @current-change="changeCurrent"
                 layout="total, prev, pager, next, jumper"></el-pagination>
-              
             </el-col>
           </el-row>
         </div>
-        
       </div>
     </section>
     <tps-edit :tpsVisible.sync = "isActive" :editApicode="editApicode" @changeTpsvisible="tpsChange"></tps-edit>
@@ -69,7 +67,7 @@ import TpsEdit from '../../components/TpsEdit'
 import NewTps from '../../components/NewTps'
 export default {
   name: 'tps',
-  data() {
+  data () {
     return {
       tableDate: [],
       apicode: '',
@@ -85,7 +83,7 @@ export default {
     'tps-edit': TpsEdit,
     'new-tps': NewTps
   },
-  mounted() {
+  mounted () {
     this.init()
   },
   methods: {
@@ -101,8 +99,8 @@ export default {
     },
     // 编辑apicode
     edittps: function (val) {
-      this.isActive = true;
-      this.editApicode = val;
+      this.isActive = true
+      this.editApicode = val
       console.log(this.editApicode)
     },
     tpsChange: function (val) {
@@ -113,41 +111,40 @@ export default {
     deletetps: function (val) {
 
     },
-    
     // 查询apicode
     searchApicode: function () {
-      var tmpTableData = [];
+      var tmpTableData = []
       if (this.apicode) {
         for (const index of this.tableDate) {
-          if (index.apicode == this.apicode) {
+          if (index.apicode === this.apicode) {
             tmpTableData.push(index)
           }
         }
-        this.tableDate = tmpTableData;
+        this.tableDate = tmpTableData
       } else {
         this.getData()
       }
     },
     // 重置
     resetTps: function () {
-      this.getData();
+      this.getData()
       this.apicode = ''
     },
     // 当修改页数时
     changeCurrent: function (val) {
-      this.currentPage = val;
+      this.currentPage = val
     },
     // 当修改每页展示数据时
     changeSize: function (val) {
-      this.pageSize = val;
-      this.currentPage = 1;
+      this.pageSize = val
+      this.currentPage = 1
     },
     // 获取tps数据
-    async getData() {
+    async getData () {
       api.JH_info('/user/tps', 'post')
         .then(res => {
-          this.tableDate = res.data;
-          this.tpsTotal = res.data.length;
+          this.tableDate = res.data
+          this.tpsTotal = res.data.length
         })
         .catch(error => {
           console.log(error)

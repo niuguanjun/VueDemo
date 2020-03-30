@@ -9,8 +9,8 @@
 
 <script>
 export default {
-  date() {
-    return{
+  date () {
+    return {
     }
   },
   props: ['title', 'data', 'isActive'],
@@ -19,7 +19,6 @@ export default {
       this.$emit('changeBg', val)
     }
   }
-  
 }
 </script>
 

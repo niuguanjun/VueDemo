@@ -56,7 +56,7 @@ export default {
   },
   methods: {
     backBtn: function () {
-      this.$router.go(-1); 
+      this.$router.go(-1)
     }
   }
 }

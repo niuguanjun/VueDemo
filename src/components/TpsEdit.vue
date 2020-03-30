@@ -7,7 +7,6 @@
           <select style="height: 36px; padding-left: 15px; padding-right: 15px; width: 380px">
             <option value="" :label="editApicode.apicode"></option>
           </select>
-          
         </el-form-item>
 
         <el-form-item label="tps: " prop="tps" label-width="120px">
@@ -26,7 +25,7 @@
 
 <script>
 export default {
-  data() {
+  data () {
     return {
       tpsData: {
         apicode: '3002111',
@@ -46,7 +45,7 @@ export default {
       this.$emit('changeTpsvisible', false)
     },
     tureTps: function () {
-      console.log('tureTps'),
+      console.log('tureTps')
       this.$emit('changeTpsvisible', true)
     }
   }

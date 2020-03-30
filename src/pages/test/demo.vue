@@ -15,7 +15,7 @@
 	 *
 	 */
 	import Clone from 'clone';
-  // import { mapState } from 'vuex';
+  // import { mapState } from 'vuex'
 
 	export default {
 		data() {
@@ -37,7 +37,7 @@
 			dataInit() {
 				if(!this.data) return;
 
-				this.dataV = Clone(this.data);
+				this.dataV = Clone(this.data)
 				this.dataV.unshift({
 					id: '',
 					name: '不限',
@@ -47,7 +47,7 @@
 			itemEvt(obj,index) {
 				// 如果是单选，则初始化
 				if(this.single != undefined) {
-					this.dataV = Clone(this.data);
+					this.dataV = Clone(this.data)
 					this.dataV.unshift({
 						id: '',
 						name: '不限',
@@ -64,7 +64,7 @@
 					this.dataV.splice(0,1,o)
 				} else {
 					// 如果点击的是不限
-//					this.dataV = JSON.parse(JSON.stringify(this.data));
+//					this.dataV = JSON.parse(JSON.stringify(this.data))
 					this.dataInit()
 				}
 				this.dataOp()
@@ -72,7 +72,7 @@
 			},
 			// 数据处理
 			dataOp() {
-				var obj = this.dataV;
+				var obj = this.dataV
 				var arr = []
 
 				obj.forEach(item => {
@@ -144,13 +144,7 @@
 .filter-item title {
 	vertical-align: top ! important;
 }
-
-
-
-
 </style>
-
-
 
 // WEBPACK FOOTER //
 // src/components/Filter.vue

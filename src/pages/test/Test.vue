@@ -5,11 +5,10 @@
     </div>
     <el-button type="primary" size="mini" @click="getAllSelect">获取被点击的内容</el-button>
     <el-checkbox label="abc" v-model="activeName" @change="test"></el-checkbox>
-  </div>  
+  </div>
 </template>
 
 <script>
-import api from '../../http/api'
 export default {
   data () {
     return {
@@ -35,21 +34,21 @@ export default {
   },
   methods: {
     getSelectList: function (val) {
-      console.log(val.name, val.isChecked);
+      console.log(val.name, val.isChecked)
       if (val.isChecked) {
         this.allChecked.push(val)
       }
       if (!val.isChecked) {
         this.allChecked.forEach(item => {
-          if (item.id == val.id) {
-            var index = this.allChecked.indexOf(item);
-            this.allChecked.splice(index, 1);
+          if (item.id === val.id) {
+            var index = this.allChecked.indexOf(item)
+            this.allChecked.splice(index, 1)
           }
         })
       }
     },
     getAllSelect: function () {
-      console.log(this.allChecked);
+      console.log(this.allChecked)
     },
     test: function () {
       console.log(this.activeName)

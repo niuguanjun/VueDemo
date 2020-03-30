@@ -23,9 +23,9 @@
           </div>
         </div>
         <!-- el-table--fit el-table--border el-table--enable-row-hover el-table--enable-row-transition -->
-        <el-table 
-          :data="customerData.slice((this.comCurrent - 1) * this.comPageSize, (this.comCurrent - 1) * this.comPageSize + this.comPageSize)" 
-          border 
+        <el-table
+          :data="customerData.slice((this.comCurrent - 1) * this.comPageSize, (this.comCurrent - 1) * this.comPageSize + this.comPageSize)"
+          border
           style="font-size: 12px; color: black; margin-bottom: 80px">
           <el-table-column prop="comId" label="客户编号" width="100px"></el-table-column>
           <el-table-column prop="comName" label="客户名称" width="250px"></el-table-column>
@@ -80,11 +80,11 @@
           </el-col>
 
           <el-col :span="12" style="text-align: right">
-            <el-pagination 
-              :total="comTotal" 
-              :current-page="comCurrent" 
+            <el-pagination
+              :total="comTotal"
+              :current-page="comCurrent"
               :page-size="comPageSize"
-              @current-change="currentChange" 
+              @current-change="currentChange"
               layout="total, prev, pager, jumper"
               style="float: right; margin-right: 10px;"></el-pagination>
           </el-col>
@@ -96,17 +96,16 @@
 
 <script>
 import Filter from '../../components/Filter'
-import {khData, testData} from '../../mock/data'
+import {khData} from '../../mock/data'
 import api from '../../http/api'
-import { async } from 'q'
 export default {
   name: 'customer',
-  data() {
+  data () {
     return {
       searchTxt: '',
       testupdate: 'abc',
       customerData: [],
-      khglData:{
+      khglData: {
         customerLevel: khData.customerLevel,
         area: khData.area,
         customerCategory: khData.customerCategory,
@@ -116,24 +115,24 @@ export default {
       isShowMore: true,
       comTotal: 0,
       comCurrent: 1,
-      comPageSize: 10,
+      comPageSize: 10
     }
   },
   components: {
     'filter-v': Filter
   },
-  mounted() {
+  mounted () {
     this.init()
   },
   methods: {
     init: function () {
       this.getData()
     },
-    async getData() {
+    async getData () {
       api.JH_info('/user/customer', 'post')
         .then(res => {
-          this.customerData = res.data;
-          this.comTotal = res.data.length;
+          this.customerData = res.data
+          this.comTotal = res.data.length
         })
         .catch(error => {
           console.log(error)
@@ -141,7 +140,7 @@ export default {
     },
     // 点击客户详情
     customerInfo: function (val) {
-      console.log('客户详情: ', val);
+      console.log('客户详情: ', val)
       this.$router.push({path: '/getDetail', query: {'comName': val.comName, 'comId': val.comId}})
     },
     searchCustomer: function () {
@@ -155,11 +154,11 @@ export default {
     },
     // 页数或当前页显示修改时
     sizeChange: function (val) {
-      this.comPageSize = val;
-      this.comCurrent = 1;
+      this.comPageSize = val
+      this.comCurrent = 1
     },
     currentChange: function (val) {
-      this.comCurrent = val;
+      this.comCurrent = val
     }
   }
 }

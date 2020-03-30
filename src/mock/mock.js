@@ -111,7 +111,7 @@ var customerData = {
     }
   ]
 }
-Mock.mock('/user/customer', 'post', customerData);
+Mock.mock('/user/customer', 'post', customerData)
 
 // 贷前造假数据
 var beforecomData = {
@@ -130,7 +130,7 @@ var beforecomData = {
     }
   ]
 }
-Mock.mock('/user/beforecomData', 'post', beforecomData);
+Mock.mock('/user/beforecomData', 'post', beforecomData)
 
 // 贷前产品配置造假数据
 var beforePData = {
@@ -316,7 +316,7 @@ var veriProListData = {
       'apiCode|3005001-3005123': 1,
       'productCategory|1': ['可疑行为,基础数据产品,失信历史', '可疑行为,失信历史', '失信历史,可疑行为'],
       'productCode|1': 'Rule_C_TelPeriod,TelCheck_s,BizCourtDetail,Rule_C_TelStatus,TelPeriodPro,TelStatus,Rule_C_CourtDetail,BizExecution,BankThree,Rule_C_TelCheck_s,Rule_C_BizCourtDetail,CourtDetail',
-      'productName|1': '信息验证规则-手机在网时长,手机三要素简版—移动联通电信,法院信息详情-企业版,信息验证规则-手机在网状态,手机在网时长高级版,手机在网状态-移动联通电信,信息验证规则-法院信息详情个人版,法院被执行人-企业版,银行卡三要素验证,信息验证规则-手机三要素简版_移动联通电信,信息验证规则-法院信息详情企业版,法院信息详情-个人版',
+      'productName|1': '信息验证规则-手机在网时长,手机三要素简版—移动联通电信,法院信息详情-企业版,信息验证规则-手机在网状态,手机在网时长高级版,手机在网状态-移动联通电信,信息验证规则-法院信息详情个人版,法院被执行人-企业版,银行卡三要素验证,信息验证规则-手机三要素简版_移动联通电信,信息验证规则-法院信息详情企业版,法院信息详情-个人版'
     }
   ]
 }
@@ -331,7 +331,7 @@ var verificationProductData = {
         'productName': '',
         'crmStatus': '',
         'spreadStatus': ''
-      } 
+      }
     }
   ]
 }

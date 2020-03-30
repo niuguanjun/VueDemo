@@ -27,9 +27,9 @@
 
         </div>
 
-        <el-table 
+        <el-table
           :data="orderData.slice((this.orderCurrent - 1) * this.orderPageSize + 1, (this.orderCurrent - 1) * this.orderPageSize + 1 + this.orderPageSize)"
-          border 
+          border
           style="font-size: 12px; color: black; margin-bottom: 80px">
           <el-table-column label="客户编号" prop="comId" width="75px;"></el-table-column>
           <el-table-column label="客户名称" prop="customerName" width="250px;"></el-table-column>
@@ -60,7 +60,6 @@
             <template slot-scope="scope" >
               <el-button type="text" size="mini" @click="reset(scope.row)">重新分配</el-button>
             </template>
-
           </el-table-column>
         </el-table>
 
@@ -68,18 +67,18 @@
           <el-row>
             <el-col :span="12" style="display: flex">
               <span class="ps">每页显示: </span>
-              <el-pagination 
-                :page-sizes="[10, 20, 50]" 
-                @size-change="sizeChange" 
+              <el-pagination
+                :page-sizes="[10, 20, 50]"
+                @size-change="sizeChange"
                 layout="sizes"
                 style="margin-left: 10px"></el-pagination>
             </el-col>
             <el-col :span="12">
-              <el-pagination 
-                :total="orderTotal" 
-                :current-page="orderCurrent" 
+              <el-pagination
+                :total="orderTotal"
+                :current-page="orderCurrent"
                 :page-size="orderPageSize"
-                @current-change="currentChange" 
+                @current-change="currentChange"
                 layout="total, prev, pager, next, jumper"
                 style="text-align: right; padding-right: 10px"></el-pagination>
             </el-col>
@@ -96,7 +95,7 @@ import Filter from '../components/Filter'
 import api from '../http/api'
 export default {
   name: 'gdxx',
-  data() {
+  data () {
     return {
       isShowMore: true,
       isShow: true,
@@ -159,7 +158,7 @@ export default {
           },
           {
             id: 5,
-            text: '退回', 
+            text: '退回',
             isActive: false
           },
           {
@@ -193,17 +192,17 @@ export default {
     'filter-time': FilterTime
   },
   mounted () {
-    this.init();
+    this.init()
   },
   methods: {
     init: function () {
       this.getData()
     },
-    async getData() {
+    async getData () {
       api.JH_info('/user/orderlist', 'post')
         .then(res => {
-          this.orderData = res.data;
-          this.orderTotal = res.data.length;
+          this.orderData = res.data
+          this.orderTotal = res.data.length
         })
         .catch(error => {
           console.log(error)
@@ -219,23 +218,20 @@ export default {
       console.log('timeChange')
     },
     changeBackG: function (val) {
-      val.isActive = !val.isActive;
+      val.isActive = !val.isActive
     },
-
     // 重新分配
     reset: function (val) {
       console.log(val)
     },
-
-    //页数显示
+    // 页数显示
     sizeChange: function (val) {
-      this.orderPageSize = val;
-      this.orderCurrent = 1;
-      
+      this.orderPageSize = val
+      this.orderCurrent = 1
     },
     currentChange: function (val) {
-      this.orderCurrent = val;
-    },
+      this.orderCurrent = val
+    }
   }
 }
 </script>

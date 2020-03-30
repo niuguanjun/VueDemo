@@ -23,7 +23,7 @@
 
 <script>
 export default {
-  data() {
+  data () {
     return {
       newTps: {
         apicode: '',
@@ -34,10 +34,10 @@ export default {
   props: ['newtpsVisible'],
   methods: {
     cancel: function () {
-      this.$emit('newTps', false);
+      this.$emit('newTps', false)
     },
     turenewTps: function () {
-      this.$emit('newTps', true);
+      this.$emit('newTps', true)
     }
   }
 }

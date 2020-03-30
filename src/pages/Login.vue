@@ -1,7 +1,7 @@
 <template>
   <div id="login">
     <!-- <el-row>
-      <el-col :span="12" style="display: flex" justify="space-between"> 
+      <el-col :span="12" style="display: flex" justify="space-between">
         <span>页数较少是显示</span>
         <el-pagination layout="prev, pager, next" :total="50"></el-pagination>
       </el-col>
@@ -41,11 +41,11 @@
 
     <div>
       <span>绑定data参数</span>
-      <el-pagination 
-        :total="mytotal" 
-        :current-page="mycurrentPage" 
-        :page-size="mypageSize" 
-        @current-change="handlecurrentChange" 
+      <el-pagination
+        :total="mytotal"
+        :current-page="mycurrentPage"
+        :page-size="mypageSize"
+        @current-change="handlecurrentChange"
         @size-change="handlePageChange"
         layout="total, sizes, prev, pager, next, jumper"
         background ></el-pagination>
@@ -53,15 +53,13 @@
 
     <el-button type="primary" @click="testAjax">点击测试mock</el-button>
     <el-button type="primary" @click="testMock">测试mock生成数据</el-button>
-
-    
   </div>
 </template>
 
 <script>
 import api from '../http/api.js'
 export default {
-  data() {
+  data () {
     return {
       mytotal: 1232,
       mycurrentPage: 1,
@@ -70,10 +68,10 @@ export default {
   },
   methods: {
     handlecurrentChange: function (val) {
-      console.log('当前显示第', val, '页');
+      console.log('当前显示第', val, '页')
     },
     handlePageChange: function (val) {
-      console.log('每页显示', val, '条')
+      console.log('每页显示' + val + '条')
     },
     testAjax: function () {
       console.log('测试ajax')

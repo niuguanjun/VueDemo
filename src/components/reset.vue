@@ -22,11 +22,11 @@
 
 <script>
 export default {
-  data() {
+  data () {
     return {
       password: {
         newpass: '',
-        turepass: '',
+        turepass: ''
       },
       post: {},
       rules: {}

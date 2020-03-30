@@ -1,14 +1,14 @@
 <template>
   <div id="filter-time">
     <span style="margin-right: 10px;">{{title}}</span>
-    <el-date-picker 
-      v-model="post.startTime" 
+    <el-date-picker
+      v-model="post.startTime"
       placeholder="开始时间"
       size="small"
       type="date"></el-date-picker>
     <span>-</span>
-    <el-date-picker 
-      v-model="post.endTime" 
+    <el-date-picker
+      v-model="post.endTime"
       placeholder="结束时间"
       size="small"
       type="date"></el-date-picker>
@@ -18,7 +18,7 @@
 
 <script>
 export default {
-  data() {
+  data () {
     return {
       post: {
         startTime: '',
@@ -29,7 +29,7 @@ export default {
   props: ['title'],
   methods: {
     cancelBtn: function () {
-      this.post.startTime = '';
+      this.post.startTime = ''
       this.post.endTime = ''
     }
   }

@@ -95,8 +95,6 @@
             <el-radio label="是" v-model="post.isPermission"></el-radio>
             <el-radio label="否" v-model="post.isPermission"></el-radio>
           </el-form-item>
-          
-
           <!-- 其他配置 -->
           <h5 style="margin-left: 10px; margin-top: 20px; margin-bottom: 20px; font-weight: 600">其他配置</h5>
           <el-form-item label="是否校验key值: ">
@@ -144,9 +142,6 @@
       </div>
     </div>
   </div>
-
-
-  
 </template>
 
 <script>
@@ -191,8 +186,8 @@ export default {
 
     },
     cancel: function () {
-      this.$router.go(-1);
-    },
+      this.$router.go(-1)
+    }
   }
 }
 </script>

@@ -1,6 +1,6 @@
 module.exports = {
   proxy: {
-    'apis': {
+    '/apis': {
       target: 'https://www.runoob.com',   //接口的域名
       ws: true,   //是否代理websocket
       secure: false,    //如果是https请求, 需要此参数

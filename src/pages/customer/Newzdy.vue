@@ -15,32 +15,26 @@
     <div class="main-content">
       <div class="detail-edit">
         <el-form :model="newZdyData" label-width="140px" inline>
-          
           <el-form-item label="APICODE: " required prop="apicode" v-if="isNew">
             <el-input v-model="newZdyData.apicode" placeholder="apiCode" style="width: 240px;"></el-input>
           </el-form-item>
-          
           <el-form-item label="APICODE: " prop="apicode" v-if="isEdit">
             <el-input v-model="newZdyData.apicode" placeholder="apicode" style="width: 240px" disabled></el-input>
           </el-form-item>
-
           <el-form-item label="订购产品编码: " prop="orderProduct" v-if="isEdit">
             <el-input v-model="newZdyData.orderProduct" style="width: 240px" disabled=""></el-input>
           </el-form-item>
-
           <el-form-item label="订购产品编码: "  prop="orderProduct" v-if="isNew">
             <el-select v-model="newZdyData.prod" placeholder="请选择" style="width: 300px" @change="codeChang">
               <el-option v-for="index of orderProducts" :key="index.key" :value="index"></el-option>
             </el-select>
           </el-form-item>
         </el-form>
-
         <el-table :data="newzdyTable" border width="100%" height="500px">
           <el-table-column label="" width="60px" align="center">
             <template slot-scope="scope">
               <!-- <el-radio ></el-radio> -->
-              <el-radio :label="scope.row.index" v-model="codeMapping" @change.native="getTemplateRow(scope.$index,scope.row)">&nbsp</el-radio>
-              
+              <el-radio :label="scope.row.index" v-model="codeMapping" @change.native="getTemplateRow(scope.$index,scope.row)">&nbsp;</el-radio>
             </template>
           </el-table-column>
           <el-table-column type="index" label="序号" width="50px" align="center"></el-table-column>
@@ -59,16 +53,15 @@
 <script>
 import api from '../../http/api'
 export default {
-  data() {
-    return { 
+  data () {
+    return {
       newZdyData: {
         apicode: '',
         orderProduct: '',
         prod: ''
       },
       newzdyTable: [],
-      orderProducts: ['ScoreCust', 'ScoreCust2', 'ScoreCust3', 'ScoreCust4', 'ScoreCust5', 
-                        'ScoreAfCust', 'ScoreAfCust1', 'ScoreAfCust2', 'ScoreAfCust3', 'ScoreAfCust4', 'ScoreAfCust5'],
+      orderProducts: ['ScoreCust', 'ScoreCust2', 'ScoreCust3', 'ScoreCust4', 'ScoreCust5', 'ScoreAfCust', 'ScoreAfCust1', 'ScoreAfCust2', 'ScoreAfCust3', 'ScoreAfCust4', 'ScoreAfCust5'],
       orderCode: '',
       codeMapping: '2',
       isNew: false,
@@ -80,14 +73,13 @@ export default {
   },
   methods: {
     init: function () {
-      this.getData();
-      this.newZdyData.apicode = this.$route.query.apicode;
-      this.newZdyData.orderProduct = this.$route.query.productid;
-      this.isEdit = this.$route.query.apicode ? true : false;
-      this.isNew = this.$route.query.apicode ? false : true;
-
+      this.getData()
+      this.newZdyData.apicode = this.$route.query.apicode
+      this.newZdyData.orderProduct = this.$route.query.productid
+      this.isEdit = !!this.$route.query.apicode
+      this.isNew = this.$route.query.apicode
     },
-    async getData() {
+    async getData () {
       if (this.orderCode.indexOf('Af') < 0) {
         api.JH_info('/user/newzdysc', 'post')
           .then(res => {
@@ -116,11 +108,11 @@ export default {
 
     },
     codeChang: function (val) {
-      this.orderCode = val;
+      this.orderCode = val
       this.init()
     },
     getTemplateRow: function (index, row) {
-      this.codeMapping = row.index;
+      this.codeMapping = row.index
     }
   }
 }

@@ -21,13 +21,13 @@
         </el-select>
 
         <el-button type="primary" size="mini" @click="searchBtn" style="margin-left: 30px">查询</el-button>
-        <el-button size="mini" @click="reset">重置</el-button>
+        <el-button size="mini" @click="cusRest">重置</el-button>
       </div>
     </div>
     <el-button type="primary" size="mini" @click="newVeriCom" style="position: fixed; right: 10px; top: 70px">新增商户配置</el-button>
-    <el-table 
+    <el-table
       :data="this.vericusListData.slice((this.comCurrent - 1) * this.pageSize, (this.comCurrent - 1) * this.pageSize + this.pageSize)"
-      border 
+      border
       style="font-size: 13px">
       <el-table-column label="客户编号" prop="comID" width="80px"></el-table-column>
       <el-table-column label="客户名称" prop="comName" width="250px"></el-table-column>
@@ -58,7 +58,7 @@
           <el-button type="text" size="mini" @click="changeStatus(scope.row)">
             <span>{{ scope.row.accountStatus ? '禁用' : '启用' }}</span>
           </el-button>
-          <el-button type="text" size="mini" @click="reset(scope.row)">重置密码</el-button>
+          <el-button type="text" size="mini" @click="cusRest(scope.row)">重置密码</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -66,30 +66,30 @@
       <el-row justify="space-between">
         <el-col :span="12" style="display: flex">
           <span class="ps">每页显示: </span>
-          <el-pagination 
-            :page-sizes="[10, 20, 50]" 
-            @size-change="sizeChange" 
+          <el-pagination
+            :page-sizes="[10, 20, 50]"
+            @size-change="sizeChange"
             style="margin-left: 10px"
             layout="sizes"></el-pagination>
         </el-col>
         <el-col :span="12">
-          <el-pagination 
-            :total="comTotal" 
-            :current-page="comCurrent" 
-            :page-size="pageSize" 
-            @current-change="currentChange" 
+          <el-pagination
+            :total="comTotal"
+            :current-page="comCurrent"
+            :page-size="pageSize"
+            @current-change="currentChange"
             layout="total, prev, pager, next, jumper"
             style="text-align: right; margin-right: 10px"></el-pagination>
         </el-col>
       </el-row>
     </div>
-  </div>  
+  </div>
 </template>
 
 <script>
 import api from '../../../http/api'
 export default {
-  data() {
+  data () {
     return {
       cusShortName: '',
       apiCode: '',
@@ -102,30 +102,30 @@ export default {
     }
   },
   mounted () {
-    this.init();
+    this.init()
   },
   methods: {
     init: function () {
-      this.getVeriData();
+      this.getVeriData()
     },
     async getVeriData () {
       api.JH_info('/user/verifiactioncuslist', 'post')
         .then(res => {
-          this.vericusListData = res.data;
-          this.comTotal = res.data.length;
+          this.vericusListData = res.data
+          this.comTotal = res.data.length
         })
         .catch(error => {
           console.log('verificationcusList', error)
-        }) 
+        })
     },
     searchBtn: function () {
 
     },
-    reset: function () {
-      this.cusShortName = '';
-      this.apiCode = '';
-      this.accountStatus = '';
-      this.accountType = '';
+    cusRest: function () {
+      this.cusShortName = ''
+      this.apiCode = ''
+      this.accountStatus = ''
+      this.accountType = ''
     },
     comDetail: function (val) {
 
@@ -136,23 +136,20 @@ export default {
     changeStatus: function (val) {
 
     },
-    reset: function (val) {
-
-    },
     newVeriCom: function () {
       this.$router.push('/verificationcusnew')
     },
     sizeChange: function (val) {
-      this.pageSize = val;
-      this.comCurrent = 1;
+      this.pageSize = val
+      this.comCurrent = 1
     },
     currentChange: function (val) {
-      this.comCurrent = val;
+      this.comCurrent = val
     }
   }
 }
 </script>
 
 <style>
-@import '../../../styles/body.css';
+@import '../../../styles/body.css'
 </style>

@@ -25,9 +25,9 @@
       </div>
     </div>
     <el-button type="primary" size="mini" @click="newPro" style="position: fixed; right: 10px; top: 70px">新增产品配置</el-button>
-    <el-table 
+    <el-table
       :data="this.verifiProList.slice((this.currentPage - 1) * this.pageSize, (this.currentPage - 1) * this.pageSize + this.pageSize)"
-      border >
+      border>
       <el-table-column label="编号" prop="comID" width="80px"></el-table-column>
       <el-table-column label="客户名称" prop="comName" width="250px"></el-table-column>
       <el-table-column label="客户简称" prop="comShortName"></el-table-column>
@@ -50,18 +50,18 @@
       <el-row>
         <el-col :span="12" style="display: flex">
           <span class="ps">每页显示: </span>
-          <el-pagination 
-            :page-sizes="[10, 20, 50]" 
-            @size-change="sizeChange" 
+          <el-pagination
+            :page-sizes="[10, 20, 50]"
+            @size-change="sizeChange"
             layout="sizes"
             style="margin-left: 10px"></el-pagination>
         </el-col>
         <el-col :span="12">
-          <el-pagination 
-            :total="proTotal" 
-            :current-page="currentPage" 
-            :page-size="pageSize" 
-            @current-change="currentChange" 
+          <el-pagination
+            :total="proTotal"
+            :current-page="currentPage"
+            :page-size="pageSize"
+            @current-change="currentChange"
             layout="total, prev, pager, next, jumper"
             style="text-align: right; margin-right: 20px"></el-pagination>
         </el-col>
@@ -82,24 +82,24 @@ export default {
       verifiProList: [],
       proTotal: 0,
       currentPage: 1,
-      pageSize: 20,
+      pageSize: 20
     }
   },
-  mounted() {
-    this.init();
+  mounted () {
+    this.init()
   },
   methods: {
     init: function () {
-      this.getproData();
+      this.getproData()
     },
     getproData: function () {
       api.JH_info('/user/verificationprolist', 'post')
         .then(res => {
-          this.verifiProList = res.data;
-          this.proTotal = res.data.length;
+          this.verifiProList = res.data
+          this.proTotal = res.data.length
         })
         .catch(error => {
-          console.log('verificationprolist', error);
+          console.log('verificationprolist', error)
         })
     },
     searchCom: function () {
@@ -107,19 +107,19 @@ export default {
       var tmpArr = []
       if (this.apiCode) {
         this.verifiProList.forEach(item => {
-          if (item.apiCode == this.apiCode) {
+          if (item.apiCode === this.apiCode) {
             tmpArr.push(item)
-            this.verifiProList = tmpArr;
+            this.verifiProList = tmpArr
           }
         })
       }
     },
     reset: function () {
-      this.comShortName  = '';
-      this.apiCode = '';
-      this.accountStatus = '';
-      this.accountType  = '';
-      this.getproData();
+      this.comShortName = ''
+      this.apiCode = ''
+      this.accountStatus = ''
+      this.accountType = ''
+      this.getproData()
     },
     newPro: function () {
       this.$router.push('/verificationpronew')
@@ -128,11 +128,11 @@ export default {
 
     },
     sizeChange: function (val) {
-      this.pageSize = val;
-      this.currentPage = 1;
+      this.pageSize = val
+      this.currentPage = 1
     },
     currentChange: function (val) {
-      this.currentPage = val;
+      this.currentPage = val
     }
   }
 }

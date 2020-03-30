@@ -20,12 +20,11 @@ export default {
       activeName: 'first'
     }
   },
-  mounted() {
-    var activeN = this.$route.query.active;
+  mounted () {
+    var activeN = this.$route.query.active
     if (activeN) {
-      this.activeName = activeN;
+      this.activeName = activeN
     }
-
   },
   methods: {
 

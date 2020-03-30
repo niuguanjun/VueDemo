@@ -17,7 +17,7 @@
     <div id="tactics-main">
       <p style="border-left: 3px solid blue; padding-left: 5px">产品预览</p>
       <el-table :data="productList"
-        border 
+        border
         style="margin-top: 20px; font-size: 13px;">
         <el-table-column label="序号" type="index" width="50px"></el-table-column>
         <el-table-column label="接口名" prop="productUrl" width="100px"></el-table-column>
@@ -31,8 +31,7 @@
         <el-table-column label="其他说明" prop="other"></el-table-column>
       </el-table>
     </div>
-    
-  </div>  
+  </div>
 </template>
 
 <script>
@@ -45,8 +44,8 @@ export default {
     }
   },
   mounted () {
-    var beforequery = this.$route.query.id;
-    this.previewApicode = beforequery;
+    var beforequery = this.$route.query.id
+    this.previewApicode = beforequery
   },
   methods: {
     cancel: function () {

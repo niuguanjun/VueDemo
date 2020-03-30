@@ -29,9 +29,9 @@
       </div>
       <el-button type="primary" style="position: fixed; right: 10px; top: 70px" size="mini" @click="newcurstomer">新增商户配置</el-button>
     </div>
-    <el-table 
+    <el-table
         :data="beforeData.slice((this.comCurrent - 1) * this.comSize, (this.comCurrent - 1) * this.comSize + this.comSize)"
-        border 
+        border
         style="font-size: 12px; color: black; margin-bottom: 80px">
         <el-table-column label="客户编号" prop="comID" width="80px"></el-table-column>
         <el-table-column label="客户名称" prop="comName" width="200px"></el-table-column>
@@ -76,24 +76,24 @@
         <el-row style="display: flex" justify="space-between">
           <el-col :span="12" style="display: flex">
             <span class="ps">每页显示: </span>
-            <el-pagination 
-              :page-sizes="[10, 20, 50]" 
-              @size-change="sizeChange" 
+            <el-pagination
+              :page-sizes="[10, 20, 50]"
+              @size-change="sizeChange"
               layout="sizes"
               style="margin-left: 9px"></el-pagination>
           </el-col>
           <el-col :span="12">
-            <el-pagination 
-              :total="comTotal" 
-              :current-page="comCurrent" 
-              :page-size="comSize" 
-              @current-change="currentChange" 
+            <el-pagination
+              :total="comTotal"
+              :current-page="comCurrent"
+              :page-size="comSize"
+              @current-change="currentChange"
               layout="total, prev, pager, jumper"
               style="float: right; margin-right: 10px"></el-pagination>
           </el-col>
         </el-row>
       </div>
-  </section>  
+  </section>
 </template>
 
 <script>
@@ -109,17 +109,18 @@ export default {
       beforeData: [],
       comTotal: 0,
       comCurrent: 1,
-      comSize: 10,
+      comSize: 10
     }
   },
   mounted () {
-    this.init();
+    this.init()
   },
   methods: {
     init: function () {
-      this.getData();
+      this.getData()
     },
-    async getData() {
+
+    async getData () {
       api.JH_info('/user/beforecomData', 'post')
         .then(res => {
           this.beforeData = res.data
@@ -129,48 +130,54 @@ export default {
           console.log('customerList', error)
         })
     },
+
     search: function () {
       if (this.apiCode) {
-        var tmpArr = [];
+        var tmpArr = []
         this.beforeData.forEach(item => {
-          if (item.apiCode == this.apiCode) {
-            tmpArr.push(item);
-            this.beforeData = tmpArr;
+          if (item.apiCode === this.apiCode) {
+            tmpArr.push(item)
+            this.beforeData = tmpArr
           }
-          
         })
       }
     },
+
     reset: function () {
-      this.apiCode = '';
-      this.getData();
+      this.apiCode = ''
+      this.getData()
     },
+
     newcurstomer: function () {
       this.$router.push({path: '/beforepaycusnew'})
     },
+
     comDetail: function (val) {
       if (val) {
         this.$router.push({path: '/beforecusview', query: {apicode: val.apiCode}})
       }
-      
     },
     comEdit: function () {
       console.log('编辑客户')
     },
+
     noUse: function () {
       console.log('禁用或者开启使用')
     },
+
     resetPs: function () {
       console.log('重置密码')
     },
+
     // 页数点击
     sizeChange: function (val) {
-      this.comSize = val;
-      this.comCurrent = 1;
+      this.comSize = val
+      this.comCurrent = 1
     },
+
     currentChange: function (val) {
       this.comCurrent = val
-    },
+    }
   }
 }
 </script>

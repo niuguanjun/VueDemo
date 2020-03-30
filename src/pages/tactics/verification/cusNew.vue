@@ -133,7 +133,7 @@
 
 <script>
 export default {
-  data() {
+  data () {
     return {
       post: {
         apiCode: '',
@@ -166,11 +166,11 @@ export default {
   },
   methods: {
     backTo: function () {
-      this.$router.go(-1);
+      this.$router.go(-1)
     },
     submit: function () {
-      console.log('保存');
-      this.$router.go(-1);
+      console.log('保存')
+      this.$router.go(-1)
     }
   }
 }

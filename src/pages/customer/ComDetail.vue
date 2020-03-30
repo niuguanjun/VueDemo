@@ -6,7 +6,6 @@
           <i class="el-icon-document" style="margin-right:8px"></i>
           {{comName}}
         </el-col>
-
         <el-col :span="6" style="text-align: right">
           <el-button size="mini" @click="backTo" class="el-icon-caret-left">返回</el-button>
         </el-col>
@@ -42,19 +41,19 @@ export default {
     'guest-info': guestInfo
   },
   mounted () {
-    this.comName = this.$route.query.comName;
-    this.comId = this.$route.query.comId;
+    this.comName = this.$route.query.comName
+    this.comId = this.$route.query.comId
   },
   methods: {
     backTo: function () {
-      this.$router.go(-1);
+      this.$router.go(-1)
     },
     handleClick: function (val) {
       console.log(val.name)
     }
   }
 }
-</script> 
+</script>
 
 <style scoped>
   @import '../../styles/body';

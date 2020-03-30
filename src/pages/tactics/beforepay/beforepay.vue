@@ -6,7 +6,7 @@
     <el-tab-pane label="产品配置" name="second">
       <product-list></product-list>
     </el-tab-pane>
-  </el-tabs>  
+  </el-tabs>
 </template>
 
 <script>
@@ -21,11 +21,10 @@ export default {
     }
   },
   mounted () {
-    var activeN = this.$route.query.activeName;
+    var activeN = this.$route.query.activeName
     if (activeN) {
-      this.activeName = activeN;
+      this.activeName = activeN
     }
-    
   },
   components: {
     'com-list': CustomerList,

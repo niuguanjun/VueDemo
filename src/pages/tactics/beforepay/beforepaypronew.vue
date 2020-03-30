@@ -22,7 +22,7 @@
         <el-tabs type="card" class="product-list" v-model="acitveName">
           <el-tab-pane v-for="item of beforeproductDate" :key="item.id" :label="item.name">
             <el-table :data="item.tableData"
-              border 
+              border
               style="">
               <el-table-column label="产品类别" prop="name" width="180px"></el-table-column>
               <el-table-column label="产品名称">
@@ -47,7 +47,7 @@
               <el-input v-model="productDayNum" size="mini" style="width: 150px; margin-left: 10px"></el-input>
             </div>
             <el-table :data="allCheckedPro"
-              border 
+              border
               style="margin-top: 30px; font-size: 13px">
               <el-table-column label="序号" width="50px" type="index"></el-table-column>
               <el-table-column label="接口名">
@@ -149,20 +149,20 @@ export default {
     init: function () {
       this.getData()
     },
-    async getData() {
+    async getData () {
       api.JH_info('/user/beforeproductData', 'post')
         .then(res => {
           this.beforeproductDate = res.data
         })
         .catch(error => {
-          console.log('beforepaypronew', error)  
+          console.log('beforepaypronew', error)
         })
     },
     submit: function () {
 
     },
     cancel: function () {
-      this.$router.go(-1);
+      this.$router.go(-1)
     },
     // 获取选择产品的列表
     getSelectList: function (val) {
@@ -171,9 +171,9 @@ export default {
       }
       if (!val.isChecked) {
         this.allCheckedPro.forEach(item => {
-          if (val.productName == item.productName) {
-            var index = this.allCheckedPro.indexOf(item);
-            this.allCheckedPro.splice(index, 1);
+          if (val.productName === item.productName) {
+            var index = this.allCheckedPro.indexOf(item)
+            this.allCheckedPro.splice(index, 1)
           }
         })
       }
@@ -185,8 +185,8 @@ export default {
         cancelButtonText: '取消',
         type: 'warning'
       }).then(async () => {
-        var index = this.allCheckedPro.indexOf(val);
-        this.allCheckedPro.splice(index, 1);
+        var index = this.allCheckedPro.indexOf(val)
+        this.allCheckedPro.splice(index, 1)
         this.$message({
           type: 'success',
           message: '删除成功'

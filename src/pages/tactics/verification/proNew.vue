@@ -29,7 +29,7 @@
 
 <script>
 export default {
-  data() {
+  data () {
     return {
       apicode: '',
       apicodeList: ['3005441', '3005442', '3005443', '3005444'],
@@ -41,7 +41,7 @@ export default {
 
     },
     cancel: function () {
-      this.$router.push({path: '/verification', query: {active: 'second'}});
+      this.$router.push({path: '/verification', query: {active: 'second'}})
     }
   }
 }

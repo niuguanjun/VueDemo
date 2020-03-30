@@ -18,11 +18,11 @@
       </el-header>
       <el-container class="con-bg">
         <el-aside style="margin-top:0px">
-          <el-menu class="el-menu-vertical-demo" default-active="1" unique-opened :collapse="isCollapse" 
+          <el-menu class="el-menu-vertical-demo" default-active="1" unique-opened :collapse="isCollapse"
             style="height: 100px; text-align: left" theme="dark" router >
             <el-submenu index="1">
               <template slot="title"><i class="el-icon-message"></i>客户中心</template>
-              <el-menu-item index="/customer" @click="skip(customer)">客户管理</el-menu-item> 
+              <el-menu-item index="/customer" @click="skip(customer)">客户管理</el-menu-item>
               <el-menu-item index="/tps" @click="skip(tps)">tps管理</el-menu-item>
               <el-menu-item index="/zdy" @click="skip(zdy)">自定义报告映射</el-menu-item>
             </el-submenu>
@@ -54,14 +54,13 @@
     </el-container>
     <reset-view :visible.sync = "isActive" @progressEvent = "changeVisible"></reset-view>
   </div>
-  
 </template>
 
 <script>
 import ResetView from '../src/components/reset'
 export default {
   name: 'App',
-  data() {
+  data () {
     return {
       customer: 'customer',
       tps: 'tps',
@@ -70,14 +69,14 @@ export default {
       zdy: 'zdy',
       log: 'log',
       isActive: false,
-      isCollapse: false,
+      isCollapse: false
     }
   },
   components: {
     'reset-view': ResetView
   },
   methods: {
-    skip: function(val) {
+    skip: function (val) {
     },
     exit: function () {
       console.log('exit')
@@ -86,9 +85,9 @@ export default {
       this.isActive = true
     },
     changeVisible: function (data) {
-      this.isActive = false;
+      this.isActive = false
     },
-    collapseEvt: function() {
+    collapseEvt: function () {
 
     }
   }
