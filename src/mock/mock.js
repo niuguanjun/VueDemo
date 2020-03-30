@@ -305,7 +305,7 @@ var veriCusListData = {
 }
 Mock.mock('/user/verifiactioncuslist', 'post', veriCusListData)
 
-// 验证客户产品配置造价数据
+// 验证客户产品配置造假数据
 var veriProListData = {
   'data|80': [
     {
@@ -321,3 +321,18 @@ var veriProListData = {
   ]
 }
 Mock.mock('/user/verificationprolist', 'post', veriProListData)
+
+// 验证产品配置造假数据
+var verificationProductData = {
+  'data': [
+    {
+      'name': '数据产品',
+      'productLists|30': {
+        'productName': '',
+        'crmStatus': '',
+        'spreadStatus': ''
+      } 
+    }
+  ]
+}
+Mock.mock('/user/verificationProductData', 'post', verificationProductData)

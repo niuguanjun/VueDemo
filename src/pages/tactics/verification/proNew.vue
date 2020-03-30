@@ -33,7 +33,7 @@ export default {
     return {
       apicode: '',
       apicodeList: ['3005441', '3005442', '3005443', '3005444'],
-      tabList: ['数据产品', '规则']
+      tabList: ['数据产品', '规则', '产品预览']
     }
   },
   methods: {

@@ -6,7 +6,8 @@
           <span class="title">验证管理--新增产品配置</span>
         </el-col>
         <el-col :span="12" style="text-align: right">
-          <el-button size="mini" class="el-icon-arrow-left" @click="backTo">返回</el-button>
+          <el-button type="primary" size="mini" @click="submit">确认</el-button>
+          <el-button size="mini" @click="backTo">取消</el-button>
         </el-col>
       </el-row>
     </div>
@@ -165,6 +166,10 @@ export default {
   },
   methods: {
     backTo: function () {
+      this.$router.go(-1);
+    },
+    submit: function () {
+      console.log('保存');
       this.$router.go(-1);
     }
   }

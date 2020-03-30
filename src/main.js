@@ -5,12 +5,24 @@ import App from './App'
 import router from './router'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
+import axios from 'axios'
 
 // 引入mock.js
 require('./mock/mock.js')
 
 Vue.use(ElementUI)
 Vue.config.productionTip = false
+
+// 设置全局的使用域名
+Vue.prototype.Host = '/api'
+// axios({
+//   url: '/api',
+//   baseURL: '',
+//   method: 'GET'
+// }).then(res => {
+//   console.log(res.data)
+//   Vue.prototype.$dict = res.data
+// })
 
 /* eslint-disable no-new */
 new Vue({
